@@ -73,6 +73,12 @@ The syntax tables aren't stored directly since they're quite large."
 		 `(modify-syntax-entry ?@ "." table)))
 	 table)))
 
+;; fix single quote issue introduced with emacs 26:
+(c-lang-defconst c-before-font-lock-functions
+  apex '(c-depropertize-new-text
+         c-restore-<>-properties
+         c-change-expand-fl-region))
+
 (c-lang-defconst c-operators
   apex `(
 	 ;; Primary.
